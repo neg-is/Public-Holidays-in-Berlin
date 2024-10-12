@@ -48,7 +48,7 @@ def check_public_holiday(n):
 
         if next_date_str in public_holidays:
             print(f"{next_date_str} is a public holiday in Berlin: {public_holidays[next_date_str]}")
-            holidays_found = True
+            #holidays_found = True
 
         # if not holidays_found:
         #     print("No public holidays in the next 7 days.")
