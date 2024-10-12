@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import requests
 
-def check_public_holiday_within_7_days(startdate):
+def check_public_holiday(n):
     # URL to scrape public holidays
     URL = "https://publicholidays.de/berlin/2024-dates/"
     response = requests.get(URL)
@@ -38,20 +38,20 @@ def check_public_holiday_within_7_days(startdate):
         print("No holiday table found.")
         return
 
-    d = datetime.strptime(startdate, '%Y-%m-%d')
+    today = datetime.now()
 
     # Check for public holidays in the next 7 days
     holidays_found = False
-    for i in range(1, 8):
-        next_date = d + timedelta(days=i)
+    for i in range(1, n+1):
+        next_date = today + timedelta(days=i)
         next_date_str = next_date.strftime('%Y-%m-%d')
 
         if next_date_str in public_holidays:
             print(f"{next_date_str} is a public holiday in Berlin: {public_holidays[next_date_str]}")
             holidays_found = True
 
-        if not holidays_found:
-            print("No public holidays in the next 7 days.")
+        # if not holidays_found:
+        #     print("No public holidays in the next 7 days.")
 
 # Example usage
-check_public_holiday_within_7_days('2024-12-24')
+check_public_holiday(150)
