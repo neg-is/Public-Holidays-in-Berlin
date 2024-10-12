@@ -41,7 +41,7 @@ def check_public_holiday(n):
     today = datetime.now()
 
     # Check for public holidays in the next 7 days
-    holidays_found = False
+    #holidays_found = False
     for i in range(1, n+1):
         next_date = today + timedelta(days=i)
         next_date_str = next_date.strftime('%Y-%m-%d')
