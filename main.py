@@ -27,8 +27,9 @@ def check_public_holiday_within_7_days(startdate):
                 try:
                     # Parse and store the date
                     date = datetime.strptime(date_text, '%d %b %Y').strftime('%Y-%m-%d')
+                    day = columns[1].get_text(strip=True)  # Fixed to use the correct column for day name
                     holiday = columns[2].get_text(strip=True)  # Fixed to use the correct column for holiday name
-                    public_holidays[date] = holiday
+                    public_holidays[date] = holiday, day
                 except ValueError:
                     print(f"Could not parse date: {date_text}")
                     continue
